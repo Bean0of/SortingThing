@@ -1,5 +1,6 @@
 # ⚠ WARNING: REALLY MESSY CODE ABOVE ⚠
-Idk man it sorts numbers and makes funny beep noises.
+Idk man it sorts numbers and makes funny beep noises.  
+Also I have only tested this program on a beefy pc so I dont know how slow it is on slower computers.
 #
 ![sortingThingPicture_1](https://user-images.githubusercontent.com/50257609/177729269-c9393cd8-1abd-464b-9199-86e238baec15.png)
 #
