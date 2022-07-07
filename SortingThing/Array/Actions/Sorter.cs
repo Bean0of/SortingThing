@@ -26,12 +26,16 @@ public abstract class Sorter : ArrayAction
 
     public static void RunSorter(Sorter sorter)
     {
+        if (Running) return;
+
         RunSorterInternal(sorter);
         RunSorterInternal2(sorter);
     }
 
     public static async void RunSorterAsync(Sorter sorter)
     {
+        if (Running) return;
+
         RunSorterInternal(sorter);
         await Task.Run(() => RunSorterInternal2(sorter));
     }
@@ -54,7 +58,7 @@ public abstract class Sorter : ArrayAction
         Program.Array.FlushColors();
         CurrentSort = null;
 
-        if (DoVerifySweep && !RunScript.ScriptControlled) RunVerify();
+        if (DoVerifySweep && !RunScript.ScriptControlled) VerifySweep.RunVerifier();
 
         Oscillator.Stop();
     }

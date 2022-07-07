@@ -8,12 +8,16 @@ public abstract class Shuffler : ArrayAction
 {
     public static void RunShuffler(Shuffler shuffler)
     {
+        if (Running) return;
+
         CurrentShuffle = shuffler;
         RunShufflerInternal(shuffler);
     }
 
     public static async void RunShufflerAsync(Shuffler shuffler)
     {
+        if (Running) return;
+
         CurrentShuffle = shuffler;
         await Task.Run(() => RunShufflerInternal(shuffler));
     }

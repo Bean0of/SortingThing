@@ -14,14 +14,14 @@ verify()
 wait(1)
 
 -- Quicksort
-size(512)
+size(2048)
 delay(2.5)
 rainbow(true)
 visual("Circle")
 wait(1)
 shuffle("Scramble")
 wait(1)
-delay(10)
+delay(0.1)
 sort("Quick Sort")
 
 -- Pause for 1 second again

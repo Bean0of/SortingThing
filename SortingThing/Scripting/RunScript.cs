@@ -132,6 +132,7 @@ public class RunScript
     private void LuaSetSize(int size)
     {
         OptionsMenu.ArraySize = size;
+        Program.Array.Length = size;
     }
 
     private void LuaSetRainbow(bool rainbow)
@@ -159,7 +160,7 @@ public class RunScript
 
     private void LuaVerify()
     {
-        OptionsMenu.RunIndependentVerify();
+        VerifySweep.RunVerifier();
     }
     #endregion
 

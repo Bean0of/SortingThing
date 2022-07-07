@@ -1,4 +1,6 @@
-﻿using SortingThing.Array.Actions;
+﻿using static SortingThing.UI.OptionsMenu;
+
+using SortingThing.Array.Actions;
 using SortingThing.Audio;
 using SortingThing.UI;
 
@@ -16,16 +18,43 @@ public class VerifySweep : ArrayAction
             
             if (array.Compare(i, i + 1) <= 0)
             {
-                array.SetColor(i, OptionsMenu.VerifyCorrectColor.ToColor());
-                array.SetColor(i + 1, OptionsMenu.VerifyCorrectColor.ToColor());
+                array.SetColor(i, VerifyCorrectColor.ToColor());
+                array.SetColor(i + 1, VerifyCorrectColor.ToColor());
             }
             else
             {
-                array.SetColor(i, OptionsMenu.VerifyWrongColor.ToColor());
-                array.SetColor(i + 1, OptionsMenu.VerifyWrongColor.ToColor());
+                array.SetColor(i, VerifyWrongColor.ToColor());
+                array.SetColor(i + 1, VerifyWrongColor.ToColor());
             }
 
             Delay();
         }
+    }
+
+    public static void RunVerifier()
+    {
+        if (Running) return;
+
+        Verifying = true;
+        RunVerifierInternal();
+    }
+
+    public static async void RunVerifierAsync()
+    {
+        if (Running) return;
+
+        Verifying = true;
+        await Task.Run(() => RunVerifierInternal());
+    }
+
+    public static void RunVerifierInternal()
+    {
+        Oscillator.Play();
+
+        new VerifySweep().Run(Program.Array);
+        Program.Array.FlushColors();
+
+        Oscillator.Stop();
+        Verifying = false;
     }
 }

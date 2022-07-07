@@ -134,7 +134,7 @@ public static class OptionsMenu
 
                 ImGui.Checkbox("Hide Menu When Sorting", ref MenuSortHide);
                 ImGui.Checkbox("Verify After Sort", ref DoVerifySweep);
-                if (ImGui.Button("Verify Array")) RunIndependentVerify();
+                if (ImGui.Button("Verify Array")) VerifySweep.RunVerifierAsync();
 
                 ImGui.EndTabItem();
             }
@@ -198,31 +198,6 @@ public static class OptionsMenu
                 Sorter.RunSorterAsync(sorter);
             }
         }
-    }
-
-    internal static void RunVerify()
-    {
-        if (Running) return;
-
-        Verifying = true;
-        new VerifySweep().Run(Program.Array);
-        Program.Array.FlushColors();
-        Verifying = false;
-    }
-
-    internal static async void RunIndependentVerify()
-    {
-        if (Running) return;
-
-        Verifying = true;
-        Oscillator.Play();
-        await Task.Run(() =>
-        {
-            new VerifySweep().Run(Program.Array);
-            Program.Array.FlushColors();
-            Oscillator.Stop();
-        });
-        Verifying = false;
     }
 
     private static void AddVisualizers()
