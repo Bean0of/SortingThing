@@ -7,7 +7,6 @@ namespace SortingThing.Scripting;
 
 public class RunScript
 {
-    private const string HelpURL = "https://github.com/Bean0of/SortingThing";
     private const string Folder = "RunScripts";
 
     private const float MaxSleep = 10;
@@ -60,8 +59,8 @@ public class RunScript
 
     public static unsafe void DrawMenu()
     {
-        if (ImGui.Button("Help")) OpenURL(HelpURL.ToUTF8Buffer().AsPointer());
-        ImGui.SameLine(0, ImGui.GetStyle().ItemInnerSpacing.X);
+        //if (ImGui.Button("Help")) OpenURL(HelpFile.ToUTF8Buffer().AsPointer());
+        //ImGui.SameLine(0, ImGui.GetStyle().ItemInnerSpacing.X);
         if (ImGui.Button("Open Folder")) OpenURL(Folder.ToUTF8Buffer().AsPointer());
         ImGui.SameLine(0, ImGui.GetStyle().ItemInnerSpacing.X);
         if (ImGui.Button("Reload")) UpdateScriptsList(Scripts);
